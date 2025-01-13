@@ -93,7 +93,6 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
-
     width: 100%;
   }
 

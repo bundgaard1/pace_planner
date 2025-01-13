@@ -10,7 +10,7 @@
   import PlansList from './components/PlansList.svelte';
   import PlanOverview from './components/PlanOverview.svelte';
   import RunInfo from './components/RunInfo.svelte';
-  import CreateRun from './components/RunCreate.svelte';
+  import RunEdit from './components/RunEdit.svelte';
   import PlanSettings from './components/PlanSettings.svelte';
 </script>
 
@@ -37,8 +37,8 @@
       <button class="close-button" on:click={() => ($rightSidebarOpen = false)}>x</button>
       {#if $rightSidebarView === 'run-info'}
         <RunInfo />
-      {:else if $rightSidebarView === 'run-create'}
-        <CreateRun />
+      {:else if $rightSidebarView === 'run-edit'}
+        <RunEdit />
       {:else if $rightSidebarView === 'plan-settings'}
         <PlanSettings />
       {/if}
@@ -64,6 +64,7 @@
   .right-sidebar {
     position: relative;
     flex: 0 0 300px;
+    height: 100%;
     padding: 20px;
     border-left: 1px solid var(--color-primary);
     box-shadow: -2px 0 5px color-mix(in srgb, var(--color-primary) 50%, transparent);

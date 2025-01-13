@@ -11,18 +11,18 @@
   };
 
   function handleSubmit() {
-    $currentPlan = {
-      ...$currentPlan,
+    currentPlan.update((plan) => ({
+      ...plan,
       ...editedPlan,
-      convertValues: $currentPlan.convertValues,
-    };
+      convertValues: plan.convertValues,
+    }));
   }
 
   async function deleteThisPlan() {
     try {
       await DeletePlan($currentPlan.id);
       rightSidebarOpen.set(false);
-      $currentPlan = null;
+      currentPlan.set(null);
     } catch (err) {
       console.log(err);
     }

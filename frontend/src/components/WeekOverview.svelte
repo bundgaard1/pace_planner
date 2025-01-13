@@ -1,8 +1,9 @@
 <script lang="ts">
   import { currentPlan, newRunDay } from '@Store/core';
   import { weekdaysShort } from '@Lib/days';
-  import { rightSidebarOpen, rightSidebarView } from '@Store/ui';
   import RunPreview from './RunPreview.svelte';
+  import { addRunToPlan } from '@Lib/run';
+  import { formatDate } from '@Lib/days';
 
   export let week: number;
   let isOpen = false;
@@ -24,16 +25,6 @@
   $: weekTotal = weekRuns.reduce((sum, run) => sum + (run.distance || 0), 0).toFixed(0);
   $: weekCompleted = weekRuns.reduce((sum, run) => sum + (run.completed ? run.distance : 0), 0);
 
-  function padNumber(num: number): string {
-    return num.toString().padStart(2, '0');
-  }
-
-  function formatDate(date: Date): string {
-    const day = date.getDate();
-    const month = date.toLocaleString('en-US', { month: 'short' });
-    return `${padNumber(day)} ${month}`;
-  }
-
   $: weekRange = (() => {
     if (!$currentPlan?.start_date) return '';
     const startDate = new Date($currentPlan.start_date);
@@ -46,9 +37,7 @@
   })();
 
   function openNewRunModal(day: number) {
-    newRunDay.set({ week, day });
-    rightSidebarView.set('run-create');
-    rightSidebarOpen.set(true);
+    addRunToPlan(day, week);
   }
 </script>
 

@@ -6,7 +6,7 @@ export const leftSidebarOpen = writable(false);
 
 export const rightSidebarOpen = writable(false);
 
-type rightSidebarView = 'run-info' | 'run-create' | 'plan-settings';
+type rightSidebarView = 'run-info' | 'run-edit' | 'plan-settings';
 export const rightSidebarView = writable('run-info' as rightSidebarView);
 
 type leftSidebarView = 'plan-list';

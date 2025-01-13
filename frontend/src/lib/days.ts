@@ -17,3 +17,13 @@ export const weekdaysShort = {
   6: 'SAT',
   7: 'SUN',
 };
+
+function padNumber(num: number): string {
+  return num.toString().padStart(2, '0');
+}
+
+export function formatDate(date: Date): string {
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'short' });
+  return `${padNumber(day)} ${month}`;
+}
