@@ -4,15 +4,25 @@ import { rightSidebarView, rightSidebarOpen } from '@Store/ui';
 
 const uuid = () => Math.random().toString(36).substring(2);
 
-export const runTypes = [
-  'Easy Run',
-  'Intervals',
-  'Threshold',
-  'Hills',
-  'Long run',
-  'Recovery',
-  'Race',
-];
+export enum RunType {
+  EASY = 'Easy Run',
+  INTERVALS = 'Intervals',
+  THRESHOLD = 'Threshold',
+  HILLS = 'Hills',
+  LONG = 'Long run',
+  Recovery = 'Recovery',
+  RACE = 'Race',
+}
+
+export const runTypeColors = {
+  [RunType.EASY]: '#0099ff',
+  [RunType.INTERVALS]: '#ffcc00',
+  [RunType.THRESHOLD]: '#99ccff',
+  [RunType.HILLS]: '#339933',
+  [RunType.LONG]: '#cc33ff',
+  [RunType.Recovery]: '#00cc66',
+  [RunType.RACE]: '#ff3300',
+};
 
 export function addRunToPlan(day, week) {
   const newRun: models.Run = {
@@ -22,7 +32,7 @@ export function addRunToPlan(day, week) {
     distance: 0,
     title: 'Run',
     notes: '',
-    run_type: runTypes[0],
+    run_type: RunType.EASY,
     completed: false,
   };
 

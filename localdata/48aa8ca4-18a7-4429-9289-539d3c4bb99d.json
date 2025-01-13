@@ -2,14 +2,14 @@
   "id": "48aa8ca4-18a7-4429-9289-539d3c4bb99d",
   "name": "BACH 2025",
   "description": "dasdwdawdaw",
-  "start_date": "2025-01-06",
-  "weeks": 10,
+  "start_date": "2025-01-13",
+  "weeks": 11,
   "runs": [
     {
       "id": "znchcbj7k9",
-      "title": "Run",
+      "title": "10k easy run",
       "distance": 10,
-      "run_type": "",
+      "run_type": "Easy Run",
       "week": 1,
       "day": 1,
       "notes": "- 1200 \n- 1000adwda\n- 800",
@@ -18,8 +18,8 @@
     {
       "id": "cni6oiymy8d",
       "title": "123",
-      "distance": 8,
-      "run_type": "",
+      "distance": 7,
+      "run_type": "Easy Run",
       "week": 1,
       "day": 4,
       "notes": "",
@@ -29,19 +29,9 @@
       "id": "2poq4umdurb",
       "title": "Intervals",
       "distance": 12,
-      "run_type": "",
+      "run_type": "Intervals",
       "week": 1,
       "day": 6,
-      "notes": "",
-      "completed": false
-    },
-    {
-      "id": "nr0mt8gmlf9",
-      "title": "Run",
-      "distance": 0,
-      "run_type": "Threshold",
-      "week": 1,
-      "day": 5,
       "notes": "",
       "completed": false
     },
@@ -52,6 +42,36 @@
       "run_type": "Long run",
       "week": 1,
       "day": 7,
+      "notes": "",
+      "completed": false
+    },
+    {
+      "id": "w513cymkbx",
+      "title": "Run",
+      "distance": 10,
+      "run_type": "Easy Run",
+      "week": 2,
+      "day": 3,
+      "notes": "",
+      "completed": false
+    },
+    {
+      "id": "ge8yfdgsn6p",
+      "title": "Run",
+      "distance": 0,
+      "run_type": "Easy Run",
+      "week": 2,
+      "day": 4,
+      "notes": "",
+      "completed": false
+    },
+    {
+      "id": "7xs7224a2fx",
+      "title": "Run",
+      "distance": 12,
+      "run_type": "Intervals",
+      "week": 2,
+      "day": 1,
       "notes": "",
       "completed": false
     }

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { currentPlan, currentRun } from '@Store/core';
   import { weekdays } from '@Lib/days';
-  import { runTypes } from '@Lib/run';
+  import { RunType } from '@Lib/run';
   import { models } from '@Models';
   import { rightSidebarOpen, rightSidebarView } from '@Store/ui';
 
@@ -36,7 +36,7 @@
   <div class="content">
     <h2>Edit run</h2>
 
-    <form on:submit|preventDefault={handleSubmit} on:change={console.log}>
+    <form on:submit|preventDefault={handleSubmit}>
       <!-- TITLE -->
       <div class="form-group">
         <label for="title">Title</label>
@@ -60,7 +60,7 @@
       <div class="form-group">
         <label for="run_type">Workout</label>
         <select id="run_type" bind:value={editedRun.run_type} required>
-          {#each runTypes as type}
+          {#each Object.values(RunType) as type}
             <option value={type}>{type}</option>
           {/each}
         </select>

@@ -21,7 +21,7 @@
 
 <div class="container">
   <div class="header">
-    <h2 class="heading">{run.title}</h2>
+    <h1 class="heading">{run.title}</h1>
     <label class="checkbox-wrapper">
       <input
         type="checkbox"
@@ -33,23 +33,27 @@
   </div>
 
   <div class="run-info">
-    <p>{run.run_type} • {run.distance} km</p>
+    <p style="font-size: 20px;">{run.run_type} • {run.distance} km</p>
   </div>
 
-  <div class="notes-section">
-    <h4>Notes</h4>
-    <div class="notes-display">
-      <div class="notes">{run.notes || 'no notes...'}</div>
+  {#if run.notes != ''}
+    <div class="notes-section">
+      <label for="notes">Notes</label>
+      <div class="notes-display">
+        <div id="notes" class="notes">{run.notes}</div>
+      </div>
     </div>
-  </div>
-  <button class="delete-btn" on:click={handleEditButton}>
+  {/if}
+  <button class="edit-btn" on:click={handleEditButton}>
     <span>Edit Run</span>
   </button>
 </div>
 
 <style>
-  .notes-section {
-    margin: 1rem 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .header {
@@ -70,6 +74,10 @@
 
   .notes-display {
     white-space: pre-wrap;
+    min-height: 60px;
     border: 1px solid var(--color-primary);
+  }
+  .edit-btn {
+    margin-top: 1rem;
   }
 </style>

@@ -2,6 +2,7 @@
   import { models } from '@Models';
   import { rightSidebarOpen, rightSidebarView } from '@Store/ui';
   import { currentRun } from '@Store/core';
+  import { runTypeColors, RunType } from '@Lib/run';
 
   export let run: models.Run;
 
@@ -10,15 +11,21 @@
     rightSidebarOpen.set(true);
     rightSidebarView.set('run-info');
   }
+
+  $: color = runTypeColors[run.run_type as RunType] || '#grey';
 </script>
 
 <div class="preview-container" on:click={openRun} on:keydown={openRun}>
-  <div class="info-row">
-    <div>{run.title}</div>
-    <div>{run.distance} km</div>
-    {#if run.completed}
-      <div class="checkmark">✓</div>
-    {/if}
+  <div style:background-color={color} class="color-bar"></div>
+  <div>
+    <div class="info-row">
+      <b class="title">{run.title}</b>
+    </div>
+    <div class="info-row">
+      <div class="stats">
+        <span class="distance">{run.run_type} - {run.distance} km</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -29,17 +36,17 @@
     display: flex;
     flex-direction: row;
     border: 1px solid var(--color-primary);
-    border-radius: 4px;
+    gap: 8px;
+  }
+
+  .color-bar {
+    width: 10px;
   }
 
   .info-row {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     gap: 5px;
-  }
-
-  .checkmark {
-    color: #4caf50;
-    font-weight: bold;
+    flex: 1;
   }
 </style>

@@ -32,9 +32,10 @@
       {#if todayRuns.length > 0}
         <div class="workouts-list">
           {#each todayRuns as run}
-            <div class="workout-item">
-              <b>{run.title}</b>
+            <div class="workout-item-detailed">
+              <h3>{run.title}</h3>
               <div>{run.run_type} - {run.distance}km</div>
+              <div>{run.notes}</div>
             </div>
           {/each}
         </div>
@@ -46,10 +47,10 @@
     <div class="dashboard-section">
       <h3>-- Next run --</h3>
       {#if nextRun}
-        <div class="workout-item">
-          <b>{nextRun.title}</b>
+        <div class="workout-item-detailed">
+          <h3>{nextRun.title}</h3>
+          <div>Week {nextRun.week}, {weekdays[nextRun.day]}</div>
           <div>{nextRun.run_type} - {nextRun.distance}km</div>
-          <div>Day {nextRun.day}, Week {nextRun.week}</div>
         </div>
       {:else}
         <div>No upcoming runs scheduled</div>
@@ -61,8 +62,9 @@
       <div class="workouts-list">
         {#each weekRuns as run}
           <div class="workout-item">
-            <div style="width: 80px;">{weekdays[run.day]}</div>
-            <div>{run.distance}km - {run.run_type}</div>
+            <div style="width: 90px;">{weekdays[run.day]}</div>
+            <div style="width: 60px;">{run.distance}km</div>
+            <div>{run.run_type}</div>
           </div>
         {/each}
       </div>
@@ -76,7 +78,7 @@
     flex-direction: column;
 
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     gap: 1rem;
   }
 
@@ -88,5 +90,9 @@
   .workout-item {
     display: flex;
     flex-direction: row;
+  }
+  .workout-item-detailed {
+    display: flex;
+    flex-direction: column;
   }
 </style>

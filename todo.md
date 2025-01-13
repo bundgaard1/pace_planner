@@ -3,6 +3,7 @@
 ## Todo
 
 - FEATURE
+
   - Make left sidebar more of a menu. With links to more sides, which open in the main centent screen
   - Manage Plans
     - Plan overview
@@ -11,16 +12,18 @@
     - Settings
     - Help
 
+- Give marker of current week
+
 ### Issues
 
-- Do something with the runpreview
 - BUG: make it so Only can complete runs which are are in the past/today
-- Save the plan everytime it changes
 
 ## Doing
 
 ## Done
 
+- Save the plan everytime it changes
+- Do something with the runpreview
 - FEATURE Editing runs
 
   - Add button to edit run

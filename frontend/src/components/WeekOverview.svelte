@@ -69,9 +69,7 @@
               </div>
             {/each}
             {#if workouts.length < 2}
-              <button class="add-run" on:click={() => openNewRunModal(dayNumber)}>
-                + Add Run
-              </button>
+              <button class="add-run" on:click={() => openNewRunModal(dayNumber)}>+ Add Run</button>
             {/if}
           </div>
         </div>
@@ -121,7 +119,7 @@
   }
 
   .day-name {
-    width: 50px;
+    min-width: 50px;
     text-align: center;
     padding-right: 15px;
     font-weight: bold;
@@ -156,10 +154,10 @@
     flex: 1;
     border: 0px;
     color: rgb(91, 91, 91);
+    padding: 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     cursor: pointer;
   }
 

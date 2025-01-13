@@ -1,27 +1,27 @@
 <script lang="ts">
   import { currentPlan } from '@Store/core';
   import { rightSidebarOpen, rightSidebarView } from '@Store/ui';
-  import { SavePlan } from '@Controllers/TrainingPlanController';
   import WeekOverview from './WeekOverview.svelte';
   import PlanDashboard from './PlanDashboard.svelte';
 
   $: weeksNumbers = $currentPlan ? Array.from({ length: $currentPlan.weeks }, (_, i) => i + 1) : [];
 
-  let saving = false;
-  let saveError = '';
+  // let saving = false;
+  // let saveError = '';
 
-  async function savePlan() {
-    if (saving) return;
-    try {
-      saving = true;
-      await SavePlan($currentPlan);
-      saveError = '';
-    } catch (err) {
-      saveError = 'Failed to save plan';
-    } finally {
-      saving = false;
-    }
-  }
+  // async function savePlan() {
+  //   if (saving) return;
+  //   try {
+  //     saving = true;
+  //     await SavePlan($currentPlan);
+  //     saveError = '';
+  //   } catch (err) {
+  //     saveError = 'Failed to save plan';
+
+  //   } finally {
+  //     saving = false;
+  //   }
+  // }
 
   async function handlePlanSettings() {
     rightSidebarView.set('plan-settings');
@@ -39,13 +39,13 @@
         <p>
           {$currentPlan.weeks} weeks - Start: {$currentPlan.start_date}
         </p>
-        {#if saveError}
+        <!-- {#if saveError}
           <span class="error">{saveError}</span>
-        {/if}
+        {/if} -->
       </div>
       <div class="button-group">
         <button on:click={handlePlanSettings}>Plan Settings</button>
-        <button on:click={savePlan} disabled={saving}> Save Plan </button>
+        <!-- <button on:click={savePlan} disabled={saving}> Save Plan </button> -->
       </div>
     </div>
 
@@ -108,9 +108,5 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1rem;
-  }
-
-  .error {
-    color: red;
   }
 </style>
