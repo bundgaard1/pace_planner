@@ -12,7 +12,7 @@
     - Settings
     - Help
 
-- Give marker of current week
+- Give marker of current week / current day
 
 ### Issues
 
