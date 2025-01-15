@@ -8,6 +8,7 @@
 /* Custom Properties */
 :root {
   --color-primary: black;
+  --color-secondary: gray;
   --color-background: white;
   --color-text: black;
   --font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

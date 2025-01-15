@@ -28,6 +28,11 @@
     <h2>Plan has not started yet</h2>
   {:else}
     <div class="dashboard-section">
+      <h3>-- Plan Description --</h3>
+      <div>{$currentPlan.description}</div>
+    </div>
+
+    <div class="dashboard-section">
       <h3>-- Todays activity --</h3>
       {#if todayRuns.length > 0}
         <div class="workouts-list">

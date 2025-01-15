@@ -30,6 +30,7 @@
 </script>
 
 <div class="container">
+  <h2>Plan Settings</h2>
   <form on:submit|preventDefault={handleSubmit}>
     <div class="form-group">
       <label for="name">Plan Name</label>

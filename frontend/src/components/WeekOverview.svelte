@@ -25,7 +25,7 @@
   $: weekTotal = weekRuns.reduce((sum, run) => sum + (run.distance || 0), 0).toFixed(0);
   $: weekCompleted = weekRuns.reduce((sum, run) => sum + (run.completed ? run.distance : 0), 0);
 
-  $: weekRange = (() => {
+  $: weekRangeString = (() => {
     if (!$currentPlan?.start_date) return '';
     const startDate = new Date($currentPlan.start_date);
     const weekStart = new Date(startDate);
@@ -36,6 +36,17 @@
     return `${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
   })();
 
+  $: isThisWeek = (() => {
+    const today = new Date();
+    const startDate = new Date($currentPlan.start_date);
+    const weekStart = new Date(startDate);
+    weekStart.setDate(startDate.getDate() + (week - 1) * 7);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+
+    return today >= weekStart && today <= weekEnd;
+  })();
+
   function openNewRunModal(day: number) {
     addRunToPlan(day, week);
   }
@@ -44,13 +55,14 @@
 <div class="week-overview">
   <div
     class="week-header"
+    class:this-week={isThisWeek}
     on:click={toggleOpen}
     tabindex={week}
     on:keypress={toggleOpen}
     role="button"
   >
     <div class="week-title">
-      <span class="week-dates">{weekRange}</span>
+      <span class="week-dates">{weekRangeString}</span>
       <span class="week-number">Week {week}</span>
       <span class="week-total">Total: {weekCompleted}/{weekTotal} km</span>
     </div>
@@ -59,8 +71,8 @@
 
   {#if isOpen}
     <div class="week-content">
-      {#each workoutsByDay as { day, workouts, dayNumber }}
-        <div class="day-row">
+      {#each workoutsByDay as { day, workouts, dayNumber }, i}
+        <div class="day-row" class:is-today={isThisWeek && new Date().getDay() === dayNumber}>
           <div class="day-name">{day}</div>
           <div class="day-runs">
             {#each workouts as workout}
@@ -94,6 +106,12 @@
     align-items: center;
     padding: 10px;
     cursor: pointer;
+  }
+  .this-week {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .is-today {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .week-title {
@@ -162,6 +180,10 @@
   }
 
   .add-run:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .is-today .add-run {
     background-color: rgba(0, 0, 0, 0.1);
   }
 </style>

@@ -1,27 +1,10 @@
 <script lang="ts">
   import { currentPlan } from '@Store/core';
-  import { rightSidebarOpen, rightSidebarView } from '@Store/ui';
+  import { rightSidebarOpen, rightSidebarView, contentView } from '@Store/ui';
   import WeekOverview from './WeekOverview.svelte';
   import PlanDashboard from './PlanDashboard.svelte';
 
   $: weeksNumbers = $currentPlan ? Array.from({ length: $currentPlan.weeks }, (_, i) => i + 1) : [];
-
-  // let saving = false;
-  // let saveError = '';
-
-  // async function savePlan() {
-  //   if (saving) return;
-  //   try {
-  //     saving = true;
-  //     await SavePlan($currentPlan);
-  //     saveError = '';
-  //   } catch (err) {
-  //     saveError = 'Failed to save plan';
-
-  //   } finally {
-  //     saving = false;
-  //   }
-  // }
 
   async function handlePlanSettings() {
     rightSidebarView.set('plan-settings');
@@ -33,19 +16,13 @@
   {#if $currentPlan != null}
     <div class="header">
       <div class="plan-info">
-        <h1>
-          --- {$currentPlan.name} ---
-        </h1>
+        <h1>--- {$currentPlan.name} ---</h1>
         <p>
           {$currentPlan.weeks} weeks - Start: {$currentPlan.start_date}
         </p>
-        <!-- {#if saveError}
-          <span class="error">{saveError}</span>
-        {/if} -->
       </div>
       <div class="button-group">
         <button on:click={handlePlanSettings}>Plan Settings</button>
-        <!-- <button on:click={savePlan} disabled={saving}> Save Plan </button> -->
       </div>
     </div>
 
@@ -61,6 +38,11 @@
     </div>
   {:else}
     <h1>No plan Selected</h1>
+    <button
+      on:click={() => {
+        contentView.set('plans-list');
+      }}>Select Plan</button
+    >
   {/if}
 </div>
 

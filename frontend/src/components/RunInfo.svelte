@@ -4,6 +4,12 @@
 
   $: run = $currentRun;
 
+  $: runDate = (() => {
+    const date = new Date($currentPlan.start_date);
+    date.setDate(date.getDate() + (run.week - 1) * 7 + run.day - 1);
+    return date.toDateString();
+  })();
+
   function handleEditButton() {
     rightSidebarView.set('run-edit');
   }
@@ -20,6 +26,9 @@
 </script>
 
 <div class="container">
+  <div>
+    <p>{runDate}</p>
+  </div>
   <div class="header">
     <h1 class="heading">{run.title}</h1>
     <label class="checkbox-wrapper">
@@ -54,6 +63,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 1rem;
   }
 
   .header {

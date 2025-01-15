@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { CreateNewPlan, GetAllPlans, DeletePlan } from '@Controllers/TrainingPlanController';
+  import { CreateNewPlan, GetAllPlans } from '@Controllers/TrainingPlanController';
   import { models } from '@Models';
   import { currentPlan } from '@Store/core';
-  import { rightSidebarOpen, leftSidebarOpen, rightSidebarView } from '@Store/ui';
+  import { rightSidebarOpen, leftSidebarOpen, rightSidebarView, contentView } from '@Store/ui';
   import { Writable, writable } from 'svelte/store';
 
   let trainingPlans: Writable<models.TrainingPlan[]> = writable([]);
@@ -27,7 +27,7 @@
       } else {
         trainingPlans.update((plans) => [...plans, newPlan]);
       }
-      $currentPlan = newPlan;
+      currentPlan.set(newPlan);
 
       rightSidebarView.set('plan-settings');
       rightSidebarOpen.set(true);
@@ -38,8 +38,8 @@
   }
 
   async function selectPlan(plan: models.TrainingPlan) {
-    $currentPlan = plan;
-    leftSidebarOpen.set(false);
+    currentPlan.set(plan);
+    contentView.set('overview');
   }
 
   onMount(fetchPlans);
@@ -59,7 +59,7 @@
       <p>The Traningplan varaible is null</p>
     {/if}
 
-    <div>
+    <div class="list">
       {#each $trainingPlans as plan (plan.id)}
         <div class="training-plan">
           <div>
@@ -83,15 +83,18 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    max-width: 600px;
   }
 
-  .error {
-    color: black;
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
-
   .training-plan {
     flex-direction: column;
-    padding: 8px;
+    padding: 1rem;
     border: 1px solid var(--color-primary);
   }
 </style>

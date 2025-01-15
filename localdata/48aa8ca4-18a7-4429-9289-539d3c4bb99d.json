@@ -1,8 +1,8 @@
 {
   "id": "48aa8ca4-18a7-4429-9289-539d3c4bb99d",
-  "name": "BACH 2025",
-  "description": "dasdwdawdaw",
-  "start_date": "2025-01-13",
+  "name": "Test PLan BabY",
+  "description": "dasdwdawdaw\n\n\nI am just testing everthing lol\n\nhaha",
+  "start_date": "2025-01-06",
   "weeks": 11,
   "runs": [
     {
@@ -56,22 +56,22 @@
       "completed": false
     },
     {
-      "id": "ge8yfdgsn6p",
+      "id": "7xs7224a2fx",
       "title": "Run",
-      "distance": 0,
+      "distance": 20,
       "run_type": "Easy Run",
       "week": 2,
-      "day": 4,
+      "day": 1,
       "notes": "",
       "completed": false
     },
     {
-      "id": "7xs7224a2fx",
+      "id": "29b0dajzyyd",
       "title": "Run",
-      "distance": 12,
-      "run_type": "Intervals",
+      "distance": 0,
+      "run_type": "Easy Run",
       "week": 2,
-      "day": 1,
+      "day": 3,
       "notes": "",
       "completed": false
     }

@@ -1,13 +1,15 @@
 import { writable } from 'svelte/store';
 
-export const currentView = writable('overview');
-
-export const leftSidebarOpen = writable(false);
+type contentView = 'overview' | 'plans-list';
+export const contentView = writable('overview' as contentView);
 
 export const rightSidebarOpen = writable(false);
 
-type rightSidebarView = 'run-info' | 'run-edit' | 'plan-settings';
-export const rightSidebarView = writable('run-info' as rightSidebarView);
+type RightSidebarView = 'run-info' | 'run-edit' | 'plan-settings';
+export const rightSidebarView = writable('run-info' as RightSidebarView);
 
-type leftSidebarView = 'plan-list';
-export const leftSidebarView = writable('plan-list' as leftSidebarView);
+contentView.subscribe((value) => {
+  rightSidebarOpen.set(false);
+});
+
+export const leftSidebarOpen = writable(false);
