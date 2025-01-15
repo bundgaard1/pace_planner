@@ -13,6 +13,7 @@
     - Help
 
 - Give marker of current week / current day
+- When no current plan, show a message to create a plan, or select a plan, maybe just got the the plans list
 
 ### Issues
 

@@ -36,10 +36,8 @@ func init() {
 	// Get environment or fallback to default
 	if env := os.Getenv("ENV"); env == "development" {
 		dataDir = "./localdata"
-	} else if env == "production" {
+	} else { // Assume production
 		dataDir = getAppDataPath() + "/paceplanner"
-	} else {
-		panic("Environment variable ENV not correct")
 	}
 
 	// Ensure directory exists

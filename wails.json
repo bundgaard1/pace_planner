@@ -9,6 +9,13 @@
   "author": {
     "name": "Mathias Jørgensen",
     "email": "mathiasbbjorgensen@gmail.com"
+  },
+  "Info": {
+    "companyName": "Mathias Jørgensen",
+    "productName": "Pace Planner",
+    "productVersion": "0.0.1-alpha",
+    "copyright": "Copyright 2025 Mathias Jørgensen",
+    "comments": "Built using Wails (https://wails.io)"
   }
 }
 
