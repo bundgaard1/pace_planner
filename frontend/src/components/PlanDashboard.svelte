@@ -29,7 +29,7 @@
   {:else}
     <div class="dashboard-section">
       <h3>-- Plan Description --</h3>
-      <div>{$currentPlan.description}</div>
+      <div class="description">{$currentPlan.description}</div>
     </div>
 
     <div class="dashboard-section">
@@ -68,7 +68,9 @@
         {#each weekRuns as run}
           <div class="workout-item">
             <div style="width: 90px;">{weekdays[run.day]}</div>
-            <div style="width: 60px;">{run.distance}km</div>
+            <div style="width: 60px; ">
+              <span style="justity-content: right;">{run.distance} km</span>
+            </div>
             <div>{run.run_type}</div>
           </div>
         {/each}
@@ -99,5 +101,9 @@
   .workout-item-detailed {
     display: flex;
     flex-direction: column;
+  }
+
+  .description {
+    white-space: pre-wrap;
   }
 </style>

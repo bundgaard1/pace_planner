@@ -178,12 +178,4 @@
     display: inline-block;
     cursor: pointer;
   }
-
-  .add-run:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-  .is-today .add-run {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
 </style>

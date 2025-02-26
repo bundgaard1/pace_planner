@@ -12,7 +12,7 @@
       "run_type": "Easy Run",
       "week": 1,
       "day": 1,
-      "notes": "- 1200 \n- 1000adwda\n- 800",
+      "notes": "- 1200 \n- 1000\n- 800",
       "completed": true
     },
     {
@@ -32,8 +32,8 @@
       "run_type": "Intervals",
       "week": 1,
       "day": 6,
-      "notes": "",
-      "completed": false
+      "notes": "dasd",
+      "completed": true
     },
     {
       "id": "56ih0nkremv",
@@ -72,6 +72,26 @@
       "run_type": "Easy Run",
       "week": 2,
       "day": 3,
+      "notes": "",
+      "completed": false
+    },
+    {
+      "id": "8u8s6wjucjk",
+      "title": "Run",
+      "distance": 12,
+      "run_type": "Threshold",
+      "week": 5,
+      "day": 4,
+      "notes": "",
+      "completed": false
+    },
+    {
+      "id": "dux04p4bpav",
+      "title": "Run",
+      "distance": 12,
+      "run_type": "Easy Run",
+      "week": 5,
+      "day": 5,
       "notes": "",
       "completed": false
     }

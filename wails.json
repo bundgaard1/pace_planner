@@ -13,7 +13,7 @@
   "Info": {
     "companyName": "Mathias Jørgensen",
     "productName": "Pace Planner",
-    "productVersion": "0.0.1-alpha",
+    "productVersion": "0.0.2",
     "copyright": "Copyright 2025 Mathias Jørgensen",
     "comments": "Built using Wails (https://wails.io)"
   }

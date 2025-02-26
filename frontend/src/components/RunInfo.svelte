@@ -1,6 +1,7 @@
 <script lang="ts">
   import { currentRun, currentPlan } from '@Store/core';
   import { rightSidebarView } from '@Store/ui';
+  import { runTypeColors, RunType } from '@Lib/run';
 
   $: run = $currentRun;
 
@@ -9,6 +10,8 @@
     date.setDate(date.getDate() + (run.week - 1) * 7 + run.day - 1);
     return date.toDateString();
   })();
+
+  $: isRunPast = new Date() > new Date(runDate);
 
   function handleEditButton() {
     rightSidebarView.set('run-edit');
@@ -23,22 +26,27 @@
       convertValues: plan.convertValues,
     }));
   }
+
+  $: color = runTypeColors[run.run_type as RunType] || '#grey';
 </script>
 
 <div class="container">
   <div>
     <p>{runDate}</p>
   </div>
+  <div style:background-color={color} class="color-bar"></div>
   <div class="header">
     <h1 class="heading">{run.title}</h1>
-    <label class="checkbox-wrapper">
-      <input
-        type="checkbox"
-        class="checkbox"
-        checked={run.completed}
-        on:change={(e) => setCompleteStatus(!run.completed)}
-      />
-    </label>
+    {#if isRunPast}
+      <label class="checkbox-wrapper">
+        <input
+          type="checkbox"
+          class="checkbox"
+          checked={run.completed}
+          on:change={(e) => setCompleteStatus(!run.completed)}
+        />
+      </label>
+    {/if}
   </div>
 
   <div class="run-info">
@@ -64,6 +72,10 @@
     flex-direction: column;
     gap: 8px;
     margin-top: 1rem;
+  }
+
+  .color-bar {
+    height: 15px;
   }
 
   .header {

@@ -2,15 +2,19 @@
 
 ## Todo
 
+- Analytics
+- Settings
+
 ### Issues
 
-- BUG: make it so Only can complete runs which are are in the past/today
-- Plan description is not newlining!. It is just a string
+- change way of saving plans, such that title of file is not the unique id.
 
 ## Doing
 
 ## Done
 
+- Plan description is not newlining!. It is just a string
+- BUG: make it so Only can complete runs which are are in the past/today
 - When no current plan, show a message to create a plan, or select a plan, maybe just got the the plans list
 - Give marker of current week / current day
 - Make left sidebar more of a menu. With links to more sides, which open in the main centent screen

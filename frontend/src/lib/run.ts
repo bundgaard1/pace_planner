@@ -1,6 +1,6 @@
 import { models } from '@Models';
 import { currentRun, currentPlan } from '@Store/core';
-import { RightSidebarView, rightSidebarOpen } from '@Store/ui';
+import { rightSidebarView, rightSidebarOpen } from '@Store/ui';
 
 const uuid = () => Math.random().toString(36).substring(2);
 

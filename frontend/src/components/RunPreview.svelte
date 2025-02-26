@@ -13,11 +13,13 @@
   }
 
   $: color = runTypeColors[run.run_type as RunType] || '#grey';
+
+  $: completedText = run.completed ? '\u2713' : '';
 </script>
 
 <div class="preview-container" on:click={openRun} on:keydown={openRun}>
   <div style:background-color={color} class="color-bar"></div>
-  <div>
+  <div class="infos">
     <div class="info-row">
       <b class="title">{run.title}</b>
     </div>
@@ -26,6 +28,9 @@
         <span class="distance">{run.run_type} - {run.distance} km</span>
       </div>
     </div>
+  </div>
+  <div class="completed">
+    <span>{completedText}</span>
   </div>
 </div>
 
@@ -37,6 +42,10 @@
     flex-direction: row;
     border: 1px solid var(--color-primary);
     gap: 8px;
+  }
+
+  .infos {
+    flex: 1;
   }
 
   .color-bar {
