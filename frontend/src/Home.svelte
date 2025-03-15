@@ -66,9 +66,10 @@
 
   .center-content {
     flex: 1;
-    padding: 20px;
+    padding: 20px 40px;
     overflow-y: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 </style>

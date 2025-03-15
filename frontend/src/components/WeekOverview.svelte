@@ -1,9 +1,11 @@
 <script lang="ts">
   import { currentPlan, newRunDay } from '@Store/core';
+  import { rightSidebarOpen } from '@Store/ui';
   import { weekdaysShort } from '@Lib/days';
-  import RunPreview from './RunPreview.svelte';
-  import { addRunToPlan } from '@Lib/run';
+  import { addRunToPlan, runTypeColors } from '@Lib/run';
   import { formatDate } from '@Lib/days';
+
+  import RunPreview from './RunPreview.svelte';
 
   export let week: number;
   let isOpen = false;
@@ -49,6 +51,16 @@
 
   function openNewRunModal(day: number) {
     addRunToPlan(day, week);
+    rightSidebarOpen.set(false);
+  }
+
+  function getBoxColor(workouts) {
+    if (workouts.length === 0) return 'transparent';
+    return runTypeColors[workouts[0].run_type] || '#888';
+  }
+
+  function getDayDistance(workouts) {
+    return workouts.reduce((sum, run) => sum + (run.distance || 0), 0).toFixed(0);
   }
 </script>
 
@@ -62,9 +74,19 @@
     role="button"
   >
     <div class="week-title">
+      <span class="week-number">W{week}</span>
       <span class="week-dates">{weekRangeString}</span>
-      <span class="week-number">Week {week}</span>
-      <span class="week-total">Total: {weekCompleted}/{weekTotal} km</span>
+      <span class="week-total">{weekCompleted}/{weekTotal} km</span>
+      <span class="day-boxes">
+        {#each workoutsByDay as { workouts, dayNumber }, i}
+          <span
+            class="day-box"
+            style:background-color={workouts.length > 0 ? getBoxColor(workouts) : 'transparent'}
+          >
+            {workouts.length > 0 ? getDayDistance(workouts) : ''}
+          </span>
+        {/each}
+      </span>
     </div>
     <span class="arrow" class:open={isOpen}>▼</span>
   </div>
@@ -91,6 +113,19 @@
 </div>
 
 <style>
+  .day-boxes {
+    display: flex;
+    gap: 8px;
+  }
+  .day-box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-primary);
+    display: inline-block;
+    text-align: center;
+    line-height: 16px;
+    font-size: small;
+  }
   .week-overview {
     display: flex;
     flex-direction: column;
@@ -125,8 +160,12 @@
     font-weight: bold;
   }
 
-  .week-number {
+  .week-total {
     width: 80px;
+  }
+
+  .week-number {
+    width: 40px;
   }
 
   .day-row {
