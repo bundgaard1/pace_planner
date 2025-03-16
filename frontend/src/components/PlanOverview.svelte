@@ -1,31 +1,16 @@
 <script lang="ts">
   import { currentPlan } from '@Store/core';
-  import { rightSidebarOpen, rightSidebarView, contentView } from '@Store/ui';
+  import { contentView } from '@Store/ui';
   import WeekOverview from './WeekOverview.svelte';
   import PlanDashboard from './PlanDashboard.svelte';
+  import PlanHeader from './PlanHeader.svelte';
 
   $: weeksNumbers = $currentPlan ? Array.from({ length: $currentPlan.weeks }, (_, i) => i + 1) : [];
-
-  async function handlePlanSettings() {
-    rightSidebarView.set('plan-settings');
-    rightSidebarOpen.set(true);
-  }
 </script>
 
 <div class="overview">
   {#if $currentPlan != null}
-    <div class="header">
-      <div class="plan-info">
-        <h1>--- {$currentPlan.name} ---</h1>
-        <p>
-          {$currentPlan.weeks} weeks - Start: {$currentPlan.start_date}
-        </p>
-      </div>
-      <div class="button-group">
-        <button on:click={handlePlanSettings}>Plan Settings</button>
-      </div>
-    </div>
-
+    <PlanHeader />
     <div class="content">
       <PlanDashboard />
       <div class="weeks-container">
@@ -55,19 +40,6 @@
     width: 100%;
     height: 100%;
     max-width: 1000px;
-  }
-
-  .header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .button-group {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
   }
 
   .content {

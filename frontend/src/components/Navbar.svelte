@@ -8,6 +8,12 @@
       Overview</button
     >
     <button
+      class:active={$contentView === 'analytics'}
+      on:click={() => contentView.set('analytics')}
+    >
+      Analytics
+    </button>
+    <button
       class:active={$contentView === 'plans-list'}
       on:click={() => contentView.set('plans-list')}
     >

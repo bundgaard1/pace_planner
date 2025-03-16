@@ -7,6 +7,7 @@
   import RunEdit from './components/RunEdit.svelte';
   import PlanSettings from './components/PlanSettings.svelte';
   import Navbar from './components/Navbar.svelte';
+  import Analytics from './components/Analytics.svelte';
 </script>
 
 <div class="home-container">
@@ -19,6 +20,8 @@
   <div class="center-content">
     {#if $contentView === 'overview'}
       <PlanOverview />
+    {:else if $contentView === 'analytics'}
+      <Analytics />
     {:else if $contentView === 'plans-list'}
       <PlansList />
     {:else}

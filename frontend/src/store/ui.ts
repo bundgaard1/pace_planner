@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-type contentView = 'overview' | 'plans-list';
+type contentView = 'overview' | 'analytics' | 'plans-list' | 'settings';
 export const contentView = writable('overview' as contentView);
 
 export const rightSidebarOpen = writable(false);
