@@ -1,8 +1,199 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Document Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pace Planner - Running Training Plan App</title>
+    <style>
+      :root {
+        --color-primary: black;
+        --color-secondary: gray;
+        --color-text: black;
+        --color-background: white;
+        --font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        --font-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas',
+          'Liberation Mono', 'Courier New', monospace;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--color-text);
+        line-height: 1.6;
+        font-family: var(--font-mono);
+      }
+
+      header {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        padding: 3rem 0;
+        text-align: center;
+        border-bottom: 1px solid var(--color-primary);
+        box-shadow: 0 0 5px var(--color-primary);
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .download-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-weight: bold;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        border: 1px solid var(--color-primary);
+        transition: all 0.2s ease;
+      }
+
+      .download-btn:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .features {
+        padding: 5rem 0;
+        background-color: #f8f9fa;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature {
+        background: var(--color-background);
+        padding: 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--color-primary);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .feature h3 {
+        color: var(--color-text);
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        background-color: var(--color-text);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      .logo-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .logo {
+        height: 48px;
+        width: 48px;
+        margin-right: 15px;
+      }
+
+      @font-face {
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''), url('assets/fonts/nunito-v16-latin-regular.woff2') format('woff2');
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to the Index Page</h1>
+    <header>
+      <div class="container">
+        <div class="logo-title">
+          <img src="./icon.ico" alt="Pace Planner Logo" class="logo" />
+          <h1>Pace Planner</h1>
+        </div>
+        <p class="tagline">
+          The ultimate training plan app for runners who want to track progress and achieve their
+          goals
+        </p>
+        <div class="download-buttons">
+          <a
+            href="./files/pace_planner-amd64-installer.exe"
+            class="download-btn"
+            download="pace_planner-installer.exe"
+            >Download for Windows</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section class="features">
+      <div class="container">
+        <h2>Features</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <h3>Create Custom Plans</h3>
+            <p>Build personalized training plans for any distance or goal</p>
+          </div>
+          <div class="feature">
+            <h3>Track Progress</h3>
+            <p>Monitor your progress with detailed statistics and visualizations</p>
+          </div>
+          <div class="feature">
+            <h3>Run Types</h3>
+            <p>Organize workouts by type: easy, tempo, interval, long runs and races</p>
+          </div>
+          <div class="feature">
+            <h3>Weekly Overview</h3>
+            <p>See your training at a glance with the intuitive weekly calendar</p>
+          </div>
+          <div class="feature">
+            <h3>Simple Interface</h3>
+            <p>Clean design makes planning your training easy and a pleasure</p>
+          </div>
+          <div class="feature">
+            <h3>Works Offline</h3>
+            <p>No internet connection required - your data stays on your device</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 Pace Planner. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
